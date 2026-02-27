@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verdant — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/dashboard.css"/>
+  <link rel="stylesheet" href="css/theme.css"/>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-top">
+      <a href="home.html" class="sb-logo">✦ Verdant</a>
+      <button class="sb-close" id="sbClose">✕</button>
+    </div>
+
+    <div class="sb-user" id="sbUser">
+      <div class="sb-avatar" id="sbAvatar">A</div>
+      <div class="sb-info">
+        <div class="sb-name" id="sbName">Loading…</div>
+        <div class="sb-email" id="sbEmail">—</div>
+      </div>
+    </div>
+
+    <nav class="sb-nav">
+      <a class="sb-item active" data-view="overview" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        Overview
+      </a>
+      <a class="sb-item" data-view="profile" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profile
+      </a>
+      <a class="sb-item" data-view="progress" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        My Progress
+      </a>
+      <a class="sb-item" href="roadmaps.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+        Roadmaps
+      </a>
+      <a class="sb-item" data-view="settings" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sb-bottom">
+      <button class="sb-logout" id="sbLogout">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Log Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- OVERLAY for mobile -->
+  <div class="sb-overlay" id="sbOverlay"></div>
+
+  <!-- MAIN -->
+  <div class="main" id="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <button class="topbar-burger" id="topbarBurger">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="topbar-breadcrumb" id="topbarBreadcrumb">Overview</div>
+      <div class="topbar-right">
+        <!-- Avatar pill — clicking opens profile view -->
+        <button class="avatar-pill" id="avatarPill" data-view="profile">
+          <div class="ap-img" id="apImg">A</div>
+          <span class="ap-name" id="apName">—</span>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <!-- Dropdown -->
+        <div class="ap-dropdown" id="apDropdown">
+          <button class="ap-dd-item" data-view="profile">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            View Profile
+          </button>
+          <button class="ap-dd-item" data-view="progress">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            My Progress
+          </button>
+          <button class="ap-dd-item" data-view="settings">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Settings
+          </button>
+          <div class="ap-dd-sep"></div>
+          <button class="ap-dd-item ap-dd-logout" id="apLogout">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Log Out
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- VIEWS -->
+    <div class="views">
+
+      <!-- ░░ OVERVIEW ░░ -->
+      <div class="view active" id="view-overview">
+
+        <div class="welcome-bar">
+          <div class="wb-text">
+            <div class="wb-greeting" id="wbGreeting">Good morning</div>
+            <h1 id="wbName">Loading…</h1>
+            <p>Here's where you stand. Keep it going.</p>
+          </div>
+          <div class="wb-streak">
+            <div class="streak-fire">🔥</div>
+            <div class="streak-num" id="streakNum">0</div>
+            <div class="streak-label">day streak</div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="sc-icon" style="--c:rgba(59,186,130,.12);--t:#3bba82">📚</div>
+            <div class="sc-val" id="stTopics">0</div>
+            <div class="sc-label">Topics Done</div>
+            <div class="sc-delta sc-up" id="stTopicsDelta"></div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-icon" style="--c:rgba(251,191,36,.12);--t:#fbbf24">🗺️</div>
+            <div class="sc-val" id="stMaps">0</div>
+            <div class="sc-label">Roadmaps Active</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-icon" style="--c:rgba(139,92,246,.12);--t:#8b5cf6">⚡</div>
+            <div class="sc-val" id="stBest">—</div>
+            <div class="sc-label">Best Completion</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-icon" style="--c:rgba(248,113,113,.12);--t:#f87171">🏆</div>
+            <div class="sc-val" id="stAch">0</div>
+            <div class="sc-label">Achievements</div>
+          </div>
+        </div>
+
+        <!-- Main grid -->
+        <div class="ov-grid">
+
+          <!-- Active roadmaps -->
+          <div class="panel panel-wide">
+            <div class="panel-head">
+              <h3>Active Roadmaps</h3>
+              <a href="roadmaps.html" class="panel-link">View all →</a>
+            </div>
+            <div id="activeRmList"></div>
+          </div>
+
+          <!-- Activity -->
+          <div class="panel">
+            <div class="panel-head"><h3>Recent Activity</h3></div>
+            <div class="activity-list" id="activityList"></div>
+          </div>
+
+          <!-- Achievements -->
+          <div class="panel">
+            <div class="panel-head"><h3>Achievements</h3></div>
+            <div class="ach-grid" id="achGrid"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ░░ PROFILE ░░ -->
+      <div class="view" id="view-profile">
+        <div class="profile-layout">
+
+          <!-- Left: visual card -->
+          <div class="profile-card">
+            <div class="pc-bg"></div>
+            <div class="pc-avatar-wrap">
+              <div class="pc-avatar" id="pcAvatar">A</div>
+              <button class="pc-avatar-btn" id="pcAvatarBtn" title="Change photo">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <input type="file" id="avatarInput" accept="image/jpeg,image/png,image/webp" style="display:none"/>
+            </div>
+            <div class="pc-name" id="pcName">—</div>
+            <div class="pc-email" id="pcEmail">—</div>
+            <div class="pc-bio" id="pcBio">No bio yet.</div>
+            <div class="pc-chips" id="pcChips"></div>
+            <div class="pc-stats">
+              <div class="pcs"><div class="pcs-val" id="pcsTopics">0</div><div class="pcs-label">Topics</div></div>
+              <div class="pcs-div"></div>
+              <div class="pcs"><div class="pcs-val" id="pcsMaps">0</div><div class="pcs-label">Roadmaps</div></div>
+              <div class="pcs-div"></div>
+              <div class="pcs"><div class="pcs-val" id="pcsStreak">0</div><div class="pcs-label">Streak</div></div>
+            </div>
+          </div>
+
+          <!-- Right: edit form -->
+          <div class="profile-form-wrap">
+            <div class="pf-header">
+              <h2>Edit Profile</h2>
+              <p>Keep your info up to date</p>
+            </div>
+            <form id="profileForm" novalidate>
+              <div class="field-row">
+                <div class="field">
+                  <label>First Name</label>
+                  <input type="text" id="fFirstName" placeholder="John"/>
+                </div>
+                <div class="field">
+                  <label>Last Name</label>
+                  <input type="text" id="fLastName" placeholder="Doe"/>
+                </div>
+              </div>
+              <div class="field">
+                <label>Display Name</label>
+                <input type="text" id="fDisplay" placeholder="How we call you"/>
+              </div>
+              <div class="field">
+                <label>Email <span class="field-lock">🔒 Read-only</span></label>
+                <input type="email" id="fEmail" disabled/>
+              </div>
+              <div class="field">
+                <label>Bio</label>
+                <textarea id="fBio" placeholder="Tell us about yourself…" maxlength="200" rows="3"></textarea>
+                <div class="field-count"><span id="bioCount">0</span>/200</div>
+              </div>
+              <div class="field">
+                <label>Interests</label>
+                <div class="interest-chips" id="interestChips">
+                  <span class="ichip" data-v="design">Design</span>
+                  <span class="ichip" data-v="frontend">Frontend</span>
+                  <span class="ichip" data-v="backend">Backend</span>
+                  <span class="ichip" data-v="devops">DevOps</span>
+                  <span class="ichip" data-v="ai">AI / ML</span>
+                  <span class="ichip" data-v="mobile">Mobile</span>
+                  <span class="ichip" data-v="security">Security</span>
+                  <span class="ichip" data-v="cloud">Cloud</span>
+                </div>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn-save" id="btnSave">Save Changes</button>
+                <span class="save-status" id="saveStatus"></span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- ░░ PROGRESS ░░ -->
+      <div class="view" id="view-progress">
+        <div class="progress-wrap">
+          <div class="progress-hero">
+            <h2>My Progress</h2>
+            <p>Your completion across all roadmaps</p>
+          </div>
+          <div id="progressCards"></div>
+        </div>
+      </div>
+
+      <!-- ░░ SETTINGS ░░ -->
+      <div class="view" id="view-settings">
+        <div class="settings-wrap">
+          <h2>Settings</h2>
+
+          <div class="settings-group">
+            <div class="sg-title">Account</div>
+            <div class="sg-item">
+              <div class="sg-info">
+                <div class="sg-name">Change Password</div>
+                <div class="sg-sub">Update your account password</div>
+              </div>
+              <button class="btn-setting" id="btnChangePw">Update</button>
+            </div>
+            <div class="sg-item">
+              <div class="sg-info">
+                <div class="sg-name">Delete Account</div>
+                <div class="sg-sub">Permanently remove your account and all data</div>
+              </div>
+              <button class="btn-setting btn-danger">Delete</button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <div class="sg-title">Preferences</div>
+            <div class="sg-item">
+              <div class="sg-info">
+                <div class="sg-name">Email Notifications</div>
+                <div class="sg-sub">Receive weekly progress summaries</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked/>
+                <span class="ts-slider"></span>
+              </label>
+            </div>
+            <div class="sg-item">
+              <div class="sg-info">
+                <div class="sg-name">Streak Reminders</div>
+                <div class="sg-sub">Daily nudge to keep your streak alive</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked/>
+                <span class="ts-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <div class="sg-title">Data</div>
+            <div class="sg-item">
+              <div class="sg-info">
+                <div class="sg-name">Reset All Progress</div>
+                <div class="sg-sub">Clears all roadmap progress — cannot be undone</div>
+              </div>
+              <button class="btn-setting btn-danger" id="btnResetProg">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /views -->
+  </div><!-- /main -->
+
+  <!-- Change Password Modal -->
+  <div class="modal-bg" id="pwModal">
+    <div class="modal">
+      <div class="modal-top">
+        <h3>Change Password</h3>
+        <button class="modal-x" id="pwModalClose">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="field"><label>Current Password</label><input type="password" id="pwCurrent" placeholder="••••••••"/></div>
+        <div class="field"><label>New Password</label><input type="password" id="pwNew" placeholder="Minimum 8 characters"/></div>
+        <div class="field"><label>Confirm Password</label><input type="password" id="pwConfirm" placeholder="Repeat new password"/></div>
+        <div class="modal-err" id="pwErr"></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-save" id="pwSaveBtn">Update Password</button>
+        <button class="btn-cancel" id="pwCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/theme.js"></script>
+</body>
+</html>

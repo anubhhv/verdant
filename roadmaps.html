@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verdant — Roadmaps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/roadmaps.css"/>
+</head>
+<body class="page-roadmaps">
+
+  <nav class="topnav">
+    <a href="index.html" class="logo">✦ Verdant</a>
+    <div class="nav-search-wrap">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="nav-search-icon"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="searchInput" type="text" placeholder="Search roadmaps…" autocomplete="off"/>
+      <div id="searchDropdown" class="search-dropdown"></div>
+    </div>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="login.html" class="nav-cta">Sign Up</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <span class="sidebar-heading">Roadmaps</span>
+        <button class="sidebar-toggle" id="sidebarToggle" title="Collapse">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="sidebar-scroll">
+        <p class="sidebar-cat">Role Based</p>
+        <div id="sidebarRole" class="sidebar-list"></div>
+        <p class="sidebar-cat">Skill Based</p>
+        <div id="sidebarSkill" class="sidebar-list"></div>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="global-progress">
+          <div class="gp-row"><span class="gp-label">Overall</span><span class="gp-val" id="globalPct">0%</span></div>
+          <div class="gp-track"><div class="gp-fill" id="globalFill" style="width:0%"></div></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-area" id="mainArea">
+
+      <!-- HOME -->
+      <section class="view active" id="viewHome">
+        <div class="home-hero">
+          <div class="hero-orb"></div>
+          <div class="hero-pill">✦ Interactive Learning Paths</div>
+          <h1 class="hero-h1">Developer<br/><span>Roadmaps</span></h1>
+          <p class="hero-sub">Community-curated, step-by-step paths to grow your career. Click any topic to mark it done.</p>
+          <div class="hero-counters">
+            <div class="counter"><b id="cntRoadmaps">0</b><small>Roadmaps</small></div>
+            <div class="counter-sep"></div>
+            <div class="counter"><b id="cntTopics">0</b><small>Topics</small></div>
+            <div class="counter-sep"></div>
+            <div class="counter"><b id="cntDone">0</b><small>Completed</small></div>
+          </div>
+        </div>
+
+        <div class="home-filters">
+          <button class="fchip active" data-f="all">All</button>
+          <button class="fchip" data-f="role">Role Based</button>
+          <button class="fchip" data-f="skill">Skill Based</button>
+        </div>
+
+        <div class="home-grid" id="homeGrid"></div>
+      </section>
+
+      <!-- DETAIL -->
+      <section class="view" id="viewDetail">
+        <div class="dh">
+          <button class="dh-back" id="btnBack">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Roadmaps
+          </button>
+          <div class="dh-info">
+            <span class="dh-icon" id="dhIcon"></span>
+            <div>
+              <h2 class="dh-title" id="dhTitle"></h2>
+              <div class="dh-meta" id="dhMeta"></div>
+            </div>
+          </div>
+          <div class="dh-ring-wrap">
+            <svg class="dh-ring" viewBox="0 0 44 44" width="44" height="44">
+              <circle cx="22" cy="22" r="18" fill="none" stroke="var(--border)" stroke-width="3"/>
+              <circle cx="22" cy="22" r="18" fill="none" stroke="var(--green-glow)" stroke-width="3"
+                stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"
+                transform="rotate(-90 22 22)" id="ringCircle"/>
+            </svg>
+            <span class="dh-ring-pct" id="ringPct">0%</span>
+          </div>
+          <button class="dh-reset" id="btnReset" title="Reset progress">↺</button>
+        </div>
+
+        <div class="dtabs">
+          <button class="dtab active" data-tab="map">Roadmap</button>
+          <button class="dtab" data-tab="resources">Resources</button>
+          <button class="dtab" data-tab="about">About</button>
+        </div>
+
+        <div class="dpanels">
+          <div class="dpanel active" id="panelMap">
+            <div class="map-canvas" id="mapCanvas"></div>
+          </div>
+          <div class="dpanel" id="panelResources">
+            <div class="res-grid" id="resGrid"></div>
+          </div>
+          <div class="dpanel" id="panelAbout">
+            <div class="about-box" id="aboutBox"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/roadmaps.js"></script>
+</body>
+</html>

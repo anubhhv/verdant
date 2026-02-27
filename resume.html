@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verdant — Resume Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/resume.css"/>
+  <link rel="stylesheet" href="css/theme.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="home.html" class="nav-logo">✦ Verdant</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="roadmaps.html" class="nav-link">Roadmaps</a></li>
+        <li><a href="resume.html" class="nav-link active">Resume</a></li>
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="nav-signin">Sign In</a>
+        <a href="index.html" class="nav-cta">Get Started →</a>
+      </div>
+      <button class="nav-burger" id="navBurger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="rs-hero">
+    <div class="rs-hero-bg"></div>
+    <div class="rs-hero-inner">
+      <div class="rs-eyebrow">
+        <span class="rs-eyebrow-dot"></span>
+        AI-Powered Resume Tools
+      </div>
+      <h1 class="rs-hero-title">Your Resume,<br/><em>Supercharged</em></h1>
+      <p class="rs-hero-sub">Screen your existing resume against any job, or build a stunning new one from scratch — all powered by AI.</p>
+      <div class="rs-hero-cards">
+        <a href="#screener" class="rh-card rh-card-screen" id="btnGoScreen">
+          <div class="rh-card-icon">🔍</div>
+          <div class="rh-card-body">
+            <div class="rh-card-title">Resume Screener</div>
+            <div class="rh-card-desc">Upload your resume + a job description. Get an AI score, gap analysis, and tips.</div>
+          </div>
+          <div class="rh-card-arrow">→</div>
+        </a>
+        <a href="#builder" class="rh-card rh-card-build" id="btnGoBuild">
+          <div class="rh-card-icon">✦</div>
+          <div class="rh-card-body">
+            <div class="rh-card-title">Resume Builder</div>
+            <div class="rh-card-desc">Fill in your details, pick a template, and export a polished resume in seconds.</div>
+          </div>
+          <div class="rh-card-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SCREENER SECTION
+  ══════════════════════════════════════════ -->
+  <section class="rs-section" id="screener">
+    <div class="rs-inner">
+      <div class="rs-section-label">Resume Screener</div>
+      <h2 class="rs-section-title">How well does your resume<br/><em>fit the job?</em></h2>
+      <p class="rs-section-sub">Drop your resume and paste the job description. Our AI analyses keyword match, experience alignment, and skills gaps — then gives you a score out of 100.</p>
+
+      <div class="screener-layout">
+
+        <!-- LEFT: Upload + Job -->
+        <div class="screener-inputs">
+          <!-- Resume Upload -->
+          <div class="upload-zone" id="uploadZone">
+            <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" hidden/>
+            <div class="uz-icon">📄</div>
+            <div class="uz-title">Drop your resume here</div>
+            <div class="uz-sub">PDF, DOC, or DOCX · Max 5MB</div>
+            <button class="uz-btn" onclick="document.getElementById('resumeFile').click()">Browse Files</button>
+            <div class="uz-filename" id="uzFilename"></div>
+          </div>
+
+          <!-- Job Role Selector -->
+          <div class="job-role-wrap">
+            <div class="jrw-label">Target Job Role</div>
+            <div class="job-roles" id="jobRoles">
+              <button class="jr-chip active" data-role="frontend">Frontend Dev</button>
+              <button class="jr-chip" data-role="backend">Backend Dev</button>
+              <button class="jr-chip" data-role="fullstack">Full Stack</button>
+              <button class="jr-chip" data-role="devops">DevOps</button>
+              <button class="jr-chip" data-role="aiml">AI / ML</button>
+              <button class="jr-chip" data-role="mobile">Mobile Dev</button>
+              <button class="jr-chip" data-role="design">UI/UX Designer</button>
+              <button class="jr-chip" data-role="cloud">Cloud Architect</button>
+              <button class="jr-chip" data-role="security">Cybersecurity</button>
+              <button class="jr-chip" data-role="product">Product Manager</button>
+            </div>
+          </div>
+
+          <!-- JD Paste -->
+          <div class="jd-wrap">
+            <div class="jd-label">Paste Job Description <span class="jd-opt">(optional but recommended)</span></div>
+            <textarea class="jd-textarea" id="jdText" placeholder="Paste the full job description here for a more accurate match score…" rows="6"></textarea>
+          </div>
+
+          <button class="screen-btn" id="screenBtn">
+            <span class="screen-btn-icon">🔍</span>
+            Analyse Resume
+          </button>
+        </div>
+
+        <!-- RIGHT: Results -->
+        <div class="screener-results" id="screenerResults">
+          <!-- Empty state -->
+          <div class="sr-empty" id="srEmpty">
+            <div class="sre-icon">✦</div>
+            <div class="sre-title">Results will appear here</div>
+            <div class="sre-sub">Upload your resume and click "Analyse Resume" to get your score.</div>
+          </div>
+
+          <!-- Score state (hidden until analysis) -->
+          <div class="sr-score-panel" id="srScore" style="display:none">
+            <div class="score-ring-wrap">
+              <svg class="score-ring" viewBox="0 0 120 120">
+                <circle class="sr-track" cx="60" cy="60" r="50" fill="none" stroke-width="8"/>
+                <circle class="sr-fill" id="srFill" cx="60" cy="60" r="50" fill="none" stroke-width="8"
+                  stroke-dasharray="314" stroke-dashoffset="314"
+                  transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="score-num-wrap">
+                <div class="score-num" id="scoreNum">0</div>
+                <div class="score-label">/ 100</div>
+              </div>
+            </div>
+            <div class="score-grade" id="scoreGrade">–</div>
+            <div class="score-tagline" id="scoreTagline">–</div>
+          </div>
+
+          <div class="sr-breakdown" id="srBreakdown" style="display:none">
+            <div class="srb-title">Score Breakdown</div>
+            <div class="srb-bars" id="srbBars"></div>
+          </div>
+
+          <div class="sr-gaps" id="srGaps" style="display:none">
+            <div class="srb-title">Skills Gap Analysis</div>
+            <div class="srg-grid" id="srgGrid"></div>
+          </div>
+
+          <div class="sr-tips" id="srTips" style="display:none">
+            <div class="srb-title">AI Recommendations</div>
+            <div class="srt-list" id="srtList"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="rs-divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       BUILDER SECTION
+  ══════════════════════════════════════════ -->
+  <section class="rs-section rs-section-dark" id="builder">
+    <div class="rs-inner">
+      <div class="rs-section-label">Resume Builder</div>
+      <h2 class="rs-section-title">Build a resume that<br/><em>gets noticed</em></h2>
+      <p class="rs-section-sub">Fill in your details, pick one of our 4 professional templates, and download a polished resume instantly.</p>
+
+      <div class="builder-layout">
+
+        <!-- LEFT: Form -->
+        <div class="builder-form-wrap">
+
+          <!-- Step tabs -->
+          <div class="builder-tabs">
+            <button class="btab active" data-step="0">1 · Basics</button>
+            <button class="btab" data-step="1">2 · Experience</button>
+            <button class="btab" data-step="2">3 · Skills</button>
+            <button class="btab" data-step="3">4 · Template</button>
+          </div>
+
+          <!-- Step 0: Basics -->
+          <div class="builder-step active" id="bstep-0">
+            <div class="bf-row-2">
+              <div class="bf-field">
+                <label>First Name</label>
+                <input type="text" id="bf-fname" placeholder="Anubhav" oninput="syncPreview()"/>
+              </div>
+              <div class="bf-field">
+                <label>Last Name</label>
+                <input type="text" id="bf-lname" placeholder="Sharma" oninput="syncPreview()"/>
+              </div>
+            </div>
+            <div class="bf-field">
+              <label>Job Title / Headline</label>
+              <input type="text" id="bf-title" placeholder="Frontend Developer" oninput="syncPreview()"/>
+            </div>
+            <div class="bf-row-2">
+              <div class="bf-field">
+                <label>Email</label>
+                <input type="email" id="bf-email" placeholder="you@email.com" oninput="syncPreview()"/>
+              </div>
+              <div class="bf-field">
+                <label>Phone</label>
+                <input type="tel" id="bf-phone" placeholder="+91 98765 43210" oninput="syncPreview()"/>
+              </div>
+            </div>
+            <div class="bf-row-2">
+              <div class="bf-field">
+                <label>Location</label>
+                <input type="text" id="bf-location" placeholder="Bengaluru, India" oninput="syncPreview()"/>
+              </div>
+              <div class="bf-field">
+                <label>LinkedIn / Portfolio URL</label>
+                <input type="url" id="bf-url" placeholder="linkedin.com/in/you" oninput="syncPreview()"/>
+              </div>
+            </div>
+            <div class="bf-field">
+              <label>Professional Summary</label>
+              <textarea id="bf-summary" rows="4" placeholder="Write 2–3 lines about your experience and what you bring to the role…" oninput="syncPreview()"></textarea>
+            </div>
+          </div>
+
+          <!-- Step 1: Experience -->
+          <div class="builder-step" id="bstep-1">
+            <div class="exp-list" id="expList"></div>
+            <button class="add-item-btn" id="addExpBtn">+ Add Experience</button>
+          </div>
+
+          <!-- Step 2: Skills + Education -->
+          <div class="builder-step" id="bstep-2">
+            <div class="bf-field">
+              <label>Skills <span class="bf-hint">comma separated</span></label>
+              <input type="text" id="bf-skills" placeholder="React, TypeScript, Node.js, PostgreSQL, Docker…" oninput="syncPreview()"/>
+            </div>
+            <div class="bf-field" style="margin-top:24px">
+              <label>Education</label>
+              <div class="edu-list" id="eduList"></div>
+              <button class="add-item-btn" id="addEduBtn">+ Add Education</button>
+            </div>
+            <div class="bf-field" style="margin-top:24px">
+              <label>Certifications <span class="bf-hint">optional</span></label>
+              <input type="text" id="bf-certs" placeholder="AWS Solutions Architect, Google Cloud Associate…" oninput="syncPreview()"/>
+            </div>
+          </div>
+
+          <!-- Step 3: Template -->
+          <div class="builder-step" id="bstep-3">
+            <div class="template-picker" id="templatePicker">
+
+              <div class="tpl-card active" data-tpl="classic">
+                <div class="tpl-preview tpl-classic">
+                  <div class="tp-header"></div>
+                  <div class="tp-body">
+                    <div class="tp-line tp-wide"></div>
+                    <div class="tp-line tp-med"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line tp-med"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-spacer"></div>
+                    <div class="tp-line tp-wide"></div>
+                    <div class="tp-line tp-med"></div>
+                    <div class="tp-line"></div>
+                  </div>
+                </div>
+                <div class="tpl-name">Classic</div>
+                <div class="tpl-desc">Clean, ATS-friendly, timeless</div>
+                <div class="tpl-badge tpl-badge-popular">Most Popular</div>
+              </div>
+
+              <div class="tpl-card" data-tpl="modern">
+                <div class="tpl-preview tpl-modern">
+                  <div class="tp-sidebar"></div>
+                  <div class="tp-body">
+                    <div class="tp-line tp-wide"></div>
+                    <div class="tp-line tp-med"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-spacer"></div>
+                    <div class="tp-line tp-wide"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line tp-med"></div>
+                  </div>
+                </div>
+                <div class="tpl-name">Modern</div>
+                <div class="tpl-desc">Bold sidebar, great contrast</div>
+              </div>
+
+              <div class="tpl-card" data-tpl="minimal">
+                <div class="tpl-preview tpl-minimal">
+                  <div class="tp-rule"></div>
+                  <div class="tp-body">
+                    <div class="tp-line tp-wide tp-dark"></div>
+                    <div class="tp-line tp-med"></div>
+                    <div class="tp-spacer"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line tp-med"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-spacer"></div>
+                    <div class="tp-line tp-wide"></div>
+                    <div class="tp-line"></div>
+                  </div>
+                </div>
+                <div class="tpl-name">Minimal</div>
+                <div class="tpl-desc">Ultra-clean, typography-first</div>
+              </div>
+
+              <div class="tpl-card" data-tpl="creative">
+                <div class="tpl-preview tpl-creative">
+                  <div class="tp-accent-bar"></div>
+                  <div class="tp-body">
+                    <div class="tp-avatar"></div>
+                    <div class="tp-line tp-wide"></div>
+                    <div class="tp-line tp-med"></div>
+                    <div class="tp-spacer"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line tp-med"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-chips">
+                      <span></span><span></span><span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tpl-name">Creative</div>
+                <div class="tpl-desc">Stand out with personality</div>
+              </div>
+
+            </div>
+
+            <div class="export-actions">
+              <button class="export-btn" id="exportPdfBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+              </button>
+              <button class="export-btn export-btn-outline" id="exportJsonBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Save Draft
+              </button>
+            </div>
+          </div>
+
+          <!-- Step nav -->
+          <div class="bstep-nav">
+            <button class="bstep-prev" id="bstepPrev" disabled>← Back</button>
+            <div class="bstep-dots" id="bstepDots">
+              <span class="bsd active"></span>
+              <span class="bsd"></span>
+              <span class="bsd"></span>
+              <span class="bsd"></span>
+            </div>
+            <button class="bstep-next" id="bstepNext">Next →</button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Live Preview -->
+        <div class="builder-preview-wrap">
+          <div class="bp-topbar">
+            <span class="bp-label">Live Preview</span>
+            <span class="bp-template-name" id="bpTemplateName">Classic Template</span>
+          </div>
+          <div class="bp-page-wrap">
+            <div class="bp-page-wrap-inner">
+              <div class="bp-page-scaler">
+                <div class="bp-page" id="bpPage"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer strip -->
+  <div class="rs-footer-strip">
+    <a href="home.html" class="rs-back-home">← Back to Home</a>
+    <span>✦ Verdant Resume Studio</span>
+  </div>
+
+  <!-- Toast -->
+  <div class="rs-toast" id="rsToast"></div>
+
+  <script src="js/resume.js"></script>
+  <script src="js/theme.js"></script>
+</body>
+</html>

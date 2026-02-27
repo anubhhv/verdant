@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verdant — Grow Your Developer Career</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/home.css"/>
+  <link rel="stylesheet" href="css/theme.css"/>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- ═══════════════════════════════════
+       NAV
+  ═══════════════════════════════════ -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="home.html" class="nav-logo">✦ Verdant</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="home.html" class="nav-link active">Home</a></li>
+        <li><a href="roadmaps.html" class="nav-link">Roadmaps</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="resume.html" class="nav-link">Resume</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="nav-signin">Sign In</a>
+        <a href="index.html" class="nav-cta">Get Started →</a>
+      </div>
+      <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════
+       HERO
+  ═══════════════════════════════════ -->
+  <section class="hero">
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        Community-curated learning paths
+      </div>
+
+      <h1 class="hero-title">
+        <span class="ht-line" style="--d:0s">Grow Your</span>
+        <span class="ht-line ht-accent" style="--d:.14s">Developer</span>
+        <span class="ht-line" style="--d:.28s">Career.</span>
+      </h1>
+
+      <p class="hero-sub" style="--d:.42s">
+        Structured roadmaps, curated resources, and progress tracking —
+        everything you need to go from zero to job-ready, completely free.
+      </p>
+
+      <div class="hero-ctas" style="--d:.54s">
+        <a href="index.html" class="btn-primary">
+          Start Learning Free
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="roadmaps.html" class="btn-outline">Browse Roadmaps</a>
+      </div>
+
+      <div class="hero-stats" style="--d:.66s">
+        <div class="hs">
+          <span class="hs-num" data-count="8">0</span><span class="hs-suffix">+</span>
+          <span class="hs-label">Roadmaps</span>
+        </div>
+        <div class="hs-divider"></div>
+        <div class="hs">
+          <span class="hs-num" data-count="220">0</span><span class="hs-suffix">+</span>
+          <span class="hs-label">Topics</span>
+        </div>
+        <div class="hs-divider"></div>
+        <div class="hs">
+          <span class="hs-num" data-count="100">0</span><span class="hs-suffix">%</span>
+          <span class="hs-label">Free</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <!-- Central progress orb -->
+      <div class="hero-orb">
+        <div class="orb-ring orb-ring-1"></div>
+        <div class="orb-ring orb-ring-2"></div>
+        <div class="orb-ring orb-ring-3"></div>
+        <div class="orb-core">
+          <span class="orb-icon">✦</span>
+        </div>
+      </div>
+
+      <!-- Floating roadmap cards -->
+      <div class="float-card fc-1">
+        <div class="fc-icon">🌐</div>
+        <div class="fc-body">
+          <div class="fc-title">Frontend Dev</div>
+          <div class="fc-bar"><div class="fc-fill" style="width:72%"></div></div>
+          <div class="fc-meta">72% · 20/28 topics</div>
+        </div>
+      </div>
+
+      <div class="float-card fc-2">
+        <div class="fc-icon">🚀</div>
+        <div class="fc-body">
+          <div class="fc-title">DevOps Engineer</div>
+          <div class="fc-bar"><div class="fc-fill" style="width:45%"></div></div>
+          <div class="fc-meta">45% · 16/36 topics</div>
+        </div>
+      </div>
+
+      <div class="float-card fc-3">
+        <div class="fc-icon">🤖</div>
+        <div class="fc-body">
+          <div class="fc-title">AI / ML Engineer</div>
+          <div class="fc-bar"><div class="fc-fill" style="width:28%"></div></div>
+          <div class="fc-meta">28% · 11/40 topics</div>
+        </div>
+      </div>
+
+      <!-- Achievement pill -->
+      <div class="achieve-pill">
+        <span class="achieve-icon">✓</span>
+        <span>React.js marked complete!</span>
+      </div>
+
+      <!-- Streak badge -->
+      <div class="streak-badge">
+        <span>🔥</span>
+        <span>7 day streak</span>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       MARQUEE
+  ═══════════════════════════════════ -->
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <div class="marquee-inner" id="marqueeInner">
+        <span>HTML & CSS</span><span class="mx">✦</span>
+        <span>JavaScript</span><span class="mx">✦</span>
+        <span>React.js</span><span class="mx">✦</span>
+        <span>TypeScript</span><span class="mx">✦</span>
+        <span>Node.js</span><span class="mx">✦</span>
+        <span>PostgreSQL</span><span class="mx">✦</span>
+        <span>Docker</span><span class="mx">✦</span>
+        <span>Kubernetes</span><span class="mx">✦</span>
+        <span>Python</span><span class="mx">✦</span>
+        <span>Machine Learning</span><span class="mx">✦</span>
+        <span>AWS</span><span class="mx">✦</span>
+        <span>GraphQL</span><span class="mx">✦</span>
+        <span>Figma</span><span class="mx">✦</span>
+        <span>Redis</span><span class="mx">✦</span>
+        <span>HTML & CSS</span><span class="mx">✦</span>
+        <span>JavaScript</span><span class="mx">✦</span>
+        <span>React.js</span><span class="mx">✦</span>
+        <span>TypeScript</span><span class="mx">✦</span>
+        <span>Node.js</span><span class="mx">✦</span>
+        <span>PostgreSQL</span><span class="mx">✦</span>
+        <span>Docker</span><span class="mx">✦</span>
+        <span>Kubernetes</span><span class="mx">✦</span>
+        <span>Python</span><span class="mx">✦</span>
+        <span>Machine Learning</span><span class="mx">✦</span>
+        <span>AWS</span><span class="mx">✦</span>
+        <span>GraphQL</span><span class="mx">✦</span>
+        <span>Figma</span><span class="mx">✦</span>
+        <span>Redis</span><span class="mx">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       FEATURES
+  ═══════════════════════════════════ -->
+  <section class="section features-section" id="features">
+    <div class="section-inner">
+      <div class="section-eyebrow reveal">Why Verdant</div>
+      <h2 class="section-title reveal">Everything you need to <em>level up</em></h2>
+      <p class="section-sub reveal">No noise. No fluff. Just clear paths and the right tools to get you there.</p>
+
+      <div class="features-grid">
+
+        <div class="feat-card feat-large reveal">
+          <div class="feat-glow"></div>
+          <div class="feat-icon-wrap">🗺️</div>
+          <h3>Structured Roadmaps</h3>
+          <p>Step-by-step learning paths built by the community. Know exactly what to learn, in what order, and why — no more random YouTube rabbit holes.</p>
+          <div class="feat-visual">
+            <div class="mini-flow">
+              <div class="mf-node mf-done">
+                <span class="mf-check">✓</span> HTML & Semantics
+              </div>
+              <div class="mf-arrow"></div>
+              <div class="mf-node mf-done">
+                <span class="mf-check">✓</span> CSS & Flexbox
+              </div>
+              <div class="mf-arrow"></div>
+              <div class="mf-node mf-active">
+                <span class="mf-dot"></span> JavaScript
+              </div>
+              <div class="mf-arrow"></div>
+              <div class="mf-node">
+                <span class="mf-empty"></span> React.js
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feat-card reveal" style="--reveal-delay: 0.08s">
+          <div class="feat-glow"></div>
+          <div class="feat-icon-wrap">📊</div>
+          <h3>Track Progress</h3>
+          <p>Mark topics as done, watch your completion bar grow, and pick up exactly where you left off.</p>
+          <div class="feat-visual">
+            <div class="mini-bars">
+              <div class="mb-row">
+                <span>Frontend</span>
+                <div class="mb-bar"><div class="mb-fill" style="--w:72%"></div></div>
+                <span>72%</span>
+              </div>
+              <div class="mb-row">
+                <span>Backend</span>
+                <div class="mb-bar"><div class="mb-fill" style="--w:48%"></div></div>
+                <span>48%</span>
+              </div>
+              <div class="mb-row">
+                <span>DevOps</span>
+                <div class="mb-bar"><div class="mb-fill" style="--w:21%"></div></div>
+                <span>21%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feat-card reveal" style="--reveal-delay: 0.16s">
+          <div class="feat-glow"></div>
+          <div class="feat-icon-wrap">📚</div>
+          <h3>Curated Resources</h3>
+          <p>Every topic comes with hand-picked videos, docs, and courses — so you spend time learning, not searching.</p>
+          <div class="feat-tags">
+            <span class="ftag ftag-v">🎬 Videos</span>
+            <span class="ftag ftag-d">📘 Docs</span>
+            <span class="ftag ftag-c">🎓 Courses</span>
+            <span class="ftag ftag-a">📄 Articles</span>
+          </div>
+        </div>
+
+        <div class="feat-card reveal" style="--reveal-delay: 0.24s">
+          <div class="feat-glow"></div>
+          <div class="feat-icon-wrap">🎯</div>
+          <h3>8 Career Paths</h3>
+          <p>Frontend, Backend, DevOps, Mobile, AI/ML, Design, Cybersecurity, Cloud — every major dev career covered.</p>
+          <div class="feat-paths">
+            <span title="Frontend">🌐</span>
+            <span title="Backend">⚙️</span>
+            <span title="DevOps">🚀</span>
+            <span title="Mobile">📱</span>
+            <span title="AI/ML">🤖</span>
+            <span title="Design">🎨</span>
+            <span title="Security">🔐</span>
+            <span title="Cloud">☁️</span>
+          </div>
+        </div>
+
+        <div class="feat-card feat-wide reveal" style="--reveal-delay: 0.12s">
+          <div class="feat-glow"></div>
+          <div class="feat-icon-wrap">⚡</div>
+          <h3>Free. Forever.</h3>
+          <p>No paywalls, no premium tiers, no "unlock with Pro". Verdant is built for learners by learners — and it will always be free.</p>
+          <div class="free-badge">FREE FOREVER ✦</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       ROADMAP PREVIEWS
+  ═══════════════════════════════════ -->
+  <section class="section paths-section">
+    <div class="section-inner">
+      <div class="section-eyebrow reveal">Explore Paths</div>
+      <h2 class="section-title reveal">Pick your <em>roadmap</em></h2>
+      <p class="section-sub reveal">Every path is broken into phases, topics, and resources. Start anywhere.</p>
+
+      <div class="paths-grid">
+        <a href="roadmaps.html" class="path-card reveal" style="--reveal-delay:0s">
+          <div class="path-card-top">
+            <span class="path-icon">🌐</span>
+            <span class="path-badge path-beginner">Beginner</span>
+          </div>
+          <div class="path-title">Frontend Developer</div>
+          <div class="path-desc">HTML → CSS → JS → React → Deploy</div>
+          <div class="path-meta">28 topics · 4–6 months</div>
+          <div class="path-arrow">→</div>
+        </a>
+
+        <a href="roadmaps.html" class="path-card reveal" style="--reveal-delay:0.07s">
+          <div class="path-card-top">
+            <span class="path-icon">⚙️</span>
+            <span class="path-badge path-inter">Intermediate</span>
+          </div>
+          <div class="path-title">Backend Developer</div>
+          <div class="path-desc">APIs → Databases → Auth → Scale</div>
+          <div class="path-meta">32 topics · 5–8 months</div>
+          <div class="path-arrow">→</div>
+        </a>
+
+        <a href="roadmaps.html" class="path-card reveal" style="--reveal-delay:0.14s">
+          <div class="path-card-top">
+            <span class="path-icon">🚀</span>
+            <span class="path-badge path-advanced">Advanced</span>
+          </div>
+          <div class="path-title">DevOps Engineer</div>
+          <div class="path-desc">Linux → Docker → K8s → Cloud</div>
+          <div class="path-meta">36 topics · 6–10 months</div>
+          <div class="path-arrow">→</div>
+        </a>
+
+        <a href="roadmaps.html" class="path-card reveal" style="--reveal-delay:0.21s">
+          <div class="path-card-top">
+            <span class="path-icon">🤖</span>
+            <span class="path-badge path-advanced">Advanced</span>
+          </div>
+          <div class="path-title">AI / ML Engineer</div>
+          <div class="path-desc">Math → Python → ML → LLMs</div>
+          <div class="path-meta">40 topics · 8–14 months</div>
+          <div class="path-arrow">→</div>
+        </a>
+
+        <a href="roadmaps.html" class="path-card reveal" style="--reveal-delay:0.28s">
+          <div class="path-card-top">
+            <span class="path-icon">📱</span>
+            <span class="path-badge path-inter">Intermediate</span>
+          </div>
+          <div class="path-title">Mobile Developer</div>
+          <div class="path-desc">React Native → Native APIs → Publish</div>
+          <div class="path-meta">24 topics · 4–7 months</div>
+          <div class="path-arrow">→</div>
+        </a>
+
+        <a href="roadmaps.html" class="path-card path-card-cta reveal" style="--reveal-delay:0.35s">
+          <span class="path-cta-text">View All 8 Roadmaps</span>
+          <span class="path-cta-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       HOW IT WORKS
+  ═══════════════════════════════════ -->
+  <section class="section howto-section">
+    <div class="section-inner">
+      <div class="section-eyebrow reveal">How it works</div>
+      <h2 class="section-title reveal">Three steps to get <em>started</em></h2>
+
+      <div class="howto-grid">
+        <div class="howto-card reveal" style="--reveal-delay:0s">
+          <div class="howto-num">01</div>
+          <div class="howto-icon">✦</div>
+          <h3>Create your account</h3>
+          <p>Sign up free in seconds. No credit card. No commitment. Just your email and a goal.</p>
+        </div>
+        <div class="howto-line reveal" style="--reveal-delay:0.1s"></div>
+        <div class="howto-card reveal" style="--reveal-delay:0.15s">
+          <div class="howto-num">02</div>
+          <div class="howto-icon">🗺️</div>
+          <h3>Pick a roadmap</h3>
+          <p>Choose the career path that excites you. Each one breaks the journey into clear, manageable phases.</p>
+        </div>
+        <div class="howto-line reveal" style="--reveal-delay:0.25s"></div>
+        <div class="howto-card reveal" style="--reveal-delay:0.3s">
+          <div class="howto-num">03</div>
+          <div class="howto-icon">📈</div>
+          <h3>Learn and track</h3>
+          <p>Work through topics at your own pace. Mark each one done and watch your progress compound.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════ -->
+  <section class="section resume-promo-section" id="resume">
+    <div class="section-inner">
+      <div class="rp-layout">
+
+        <div class="rp-left reveal">
+          <div class="section-eyebrow">Resume Studio</div>
+          <h2 class="section-title">Land the job with a<br/><em>resume that wins</em></h2>
+          <p class="section-sub">AI-powered screening tells you exactly how well your resume matches any job. Then build a polished new one with our template builder — in minutes.</p>
+          <div class="rp-features">
+            <div class="rp-feat">
+              <div class="rp-feat-icon">🔍</div>
+              <div>
+                <div class="rp-feat-title">Resume Screener</div>
+                <div class="rp-feat-desc">Get a match score out of 100 against any job role</div>
+              </div>
+            </div>
+            <div class="rp-feat">
+              <div class="rp-feat-icon">✦</div>
+              <div>
+                <div class="rp-feat-title">Resume Builder</div>
+                <div class="rp-feat-desc">4 pro templates, live preview, instant export</div>
+              </div>
+            </div>
+            <div class="rp-feat">
+              <div class="rp-feat-icon">🎯</div>
+              <div>
+                <div class="rp-feat-title">Skills Gap Analysis</div>
+                <div class="rp-feat-desc">See exactly what's missing for your target role</div>
+              </div>
+            </div>
+          </div>
+          <a href="resume.html" class="btn-primary" style="margin-top:8px">Open Resume Studio →</a>
+        </div>
+
+        <div class="rp-right reveal" style="--reveal-delay:0.1s">
+          <div class="rp-score-card">
+            <div class="rpsc-label">Match Score</div>
+            <div class="rpsc-ring-wrap">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#1e1e1e" stroke-width="8"/>
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#3bba82" stroke-width="8"
+                  stroke-dasharray="314" stroke-dashoffset="78"
+                  stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="rpsc-num">75<span>/100</span></div>
+            </div>
+            <div class="rpsc-grade">B+</div>
+            <div class="rpsc-tags">
+              <span class="rpsc-tag rpsc-present">✓ React</span>
+              <span class="rpsc-tag rpsc-present">✓ Node.js</span>
+              <span class="rpsc-tag rpsc-missing">✗ TypeScript</span>
+              <span class="rpsc-tag rpsc-present">✓ Git</span>
+              <span class="rpsc-tag rpsc-missing">✗ Docker</span>
+              <span class="rpsc-tag rpsc-present">✓ CSS</span>
+            </div>
+          </div>
+
+          <div class="rp-templates">
+            <div class="rpt-label">Templates</div>
+            <div class="rpt-row">
+              <div class="rpt-thumb rpt-classic">
+                <div class="rpt-th-hdr"></div>
+                <div class="rpt-th-lines">
+                  <div class="rpt-th-l rpt-th-wide"></div>
+                  <div class="rpt-th-l rpt-th-med"></div>
+                  <div class="rpt-th-l"></div>
+                </div>
+                <div class="rpt-th-name">Classic</div>
+              </div>
+              <div class="rpt-thumb rpt-modern">
+                <div class="rpt-th-sb"></div>
+                <div class="rpt-th-lines">
+                  <div class="rpt-th-l rpt-th-wide"></div>
+                  <div class="rpt-th-l rpt-th-med"></div>
+                  <div class="rpt-th-l"></div>
+                </div>
+                <div class="rpt-th-name">Modern</div>
+              </div>
+              <div class="rpt-thumb rpt-minimal">
+                <div class="rpt-th-rule"></div>
+                <div class="rpt-th-lines">
+                  <div class="rpt-th-l rpt-th-wide rpt-th-dark"></div>
+                  <div class="rpt-th-l rpt-th-med"></div>
+                  <div class="rpt-th-l"></div>
+                </div>
+                <div class="rpt-th-name">Minimal</div>
+              </div>
+              <div class="rpt-thumb rpt-creative">
+                <div class="rpt-th-accent"></div>
+                <div class="rpt-th-lines">
+                  <div class="rpt-th-l rpt-th-wide" style="background:rgba(255,255,255,.4)"></div>
+                  <div class="rpt-th-l rpt-th-med" style="background:rgba(255,255,255,.2)"></div>
+                  <div class="rpt-th-l" style="background:rgba(255,255,255,.15)"></div>
+                </div>
+                <div class="rpt-th-name" style="color:rgba(255,255,255,.7)">Creative</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       CTA BANNER
+  ═══════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="cta-inner">
+      <div class="section-eyebrow" style="color:rgba(59,186,130,0.7)">Ready?</div>
+      <h2 class="cta-title reveal">Start your journey <em>today</em></h2>
+      <p class="reveal" style="--reveal-delay:0.1s">Pick a roadmap, mark your first topic done, and take the first real step toward the career you want.</p>
+      <div class="cta-btns reveal" style="--reveal-delay:0.2s">
+        <a href="index.html" class="btn-primary btn-primary-lg">Create Free Account →</a>
+        <a href="roadmaps.html" class="btn-outline">Explore Roadmaps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">✦ Verdant</div>
+        <p>Structured learning paths for the modern developer.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-title">Platform</div>
+          <a href="roadmaps.html">Roadmaps</a>
+          <a href="index.html">Sign Up</a>
+          <a href="login.html">Log In</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Paths</div>
+          <a href="roadmaps.html">Frontend</a>
+          <a href="roadmaps.html">Backend</a>
+          <a href="roadmaps.html">DevOps</a>
+          <a href="roadmaps.html">AI / ML</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Verdant. Built with 🌿</span>
+    </div>
+  </footer>
+
+  <script src="js/home.js"></script>
+  <script src="js/theme.js"></script>
+</body>
+</html>
